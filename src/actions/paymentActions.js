@@ -6,7 +6,7 @@ import { GET_PAYMENTS, PROFILE_LOADING, GET_ERROR } from './types';
 export const getPayments = (userRole, bank, email) => dispatch => {
 
     dispatch(setProfileLoading());
-    axios.get(`/api/payment/${userRole}/${bank}/${email}`)
+    axios.get(`https://victoriousloycefoundation.com/payhub/api/payment/${userRole}/${bank}/${email}`)
         .then(res => 
             dispatch({
                 type: GET_PAYMENTS,

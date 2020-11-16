@@ -7,7 +7,7 @@ const initialState = {
     loading: false
 };
 
-export default function (state = initialState, action){
+function assignmentReducer (state = initialState, action){
     switch(action.type) {
         case PROFILE_LOADING:
             return {
@@ -24,3 +24,5 @@ export default function (state = initialState, action){
             return state;
     }
 }
+
+export default assignmentReducer;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
 import { setCurrentUser, logoutUser } from './actions/authAction';
@@ -17,7 +17,6 @@ import Dashboard from './components/dashboard/Dashboard';
 
 import Users from './components/users/Users';
 import UserLocation from './components/users/UserLocation';
-import AddUser from './components/users/AddUser';
 
 import Banks from './components/banks/Banks';
 import AddBank from './components/banks/AddBank';

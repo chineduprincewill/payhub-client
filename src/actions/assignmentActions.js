@@ -5,7 +5,7 @@ import { GET_ASSIGNMENTS, PROFILE_LOADING, GET_ERROR } from './types';
 // Get all banks
 export const getAllAssignments = (userRole) => dispatch => {
     dispatch(setProfileLoading());
-    axios.get(`/api/assignment/${userRole}`)
+    axios.get(`https://victoriousloycefoundation.com/payhub/api/assignment/${userRole}`)
         .then(res => 
             dispatch({
                 type: GET_ASSIGNMENTS,
@@ -26,7 +26,7 @@ export const getAllAssignments = (userRole) => dispatch => {
 export const addAssignment = ( userRole, assignData, history) => dispatch => {
 
     axios
-        .post(`/api/assignment/${userRole}`, assignData)
+        .post(`https://victoriousloycefoundation.com/payhub/api/assignment/${userRole}`, assignData)
         .then(res => history.push('/assignments'))
         .catch(err => 
             dispatch({

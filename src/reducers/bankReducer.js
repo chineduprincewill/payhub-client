@@ -1,4 +1,4 @@
-import { GET_BANK, GET_BANKS, PROFILE_LOADING, GET_ERRORS, UPDATE_SUCCESS } from '../actions/types';
+import { GET_BANK, GET_BANKS, PROFILE_LOADING, UPDATE_SUCCESS } from '../actions/types';
 
 
 const initialState = {
@@ -8,7 +8,7 @@ const initialState = {
     message: ''
 };
 
-export default function (state = initialState, action){
+function bankReducer (state = initialState, action){
     switch(action.type) {
         case PROFILE_LOADING:
             return {
@@ -37,3 +37,5 @@ export default function (state = initialState, action){
             return state;
     }
 }
+
+export default bankReducer;

@@ -1,13 +1,12 @@
 import axios from 'axios';
 import setAuthToken from '../utils/setAuthToken';
-import jwt_decode from 'jwt-decode';
 
-import { GET_ERRORS, GET_ERROR, SET_CURRENT_USER } from './types';
+import { GET_ERROR, SET_CURRENT_USER } from './types';
 
 // Login - Get User Token
 export const loginUser = userData => dispatch => {
     axios
-        .post('/api/login', userData)
+        .post('https://victoriousloycefoundation.com/payhub/api/login', userData)
         .then(res => {
             // Save to localStorage
             const { token, user } = res.data;

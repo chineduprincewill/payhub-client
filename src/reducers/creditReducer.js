@@ -1,4 +1,4 @@
-import { GET_TRANSFER, GET_TRANSFERS, PROFILE_LOADING, GET_ERRORS } from '../actions/types';
+import { GET_TRANSFER, GET_TRANSFERS, PROFILE_LOADING } from '../actions/types';
 
 
 const initialState = {
@@ -7,7 +7,7 @@ const initialState = {
     loading: false
 };
 
-export default function (state = initialState, action){
+function creditReducer (state = initialState, action){
     switch(action.type) {
         case PROFILE_LOADING:
             return {
@@ -30,3 +30,5 @@ export default function (state = initialState, action){
             return state;
     }
 }
+
+export default creditReducer;

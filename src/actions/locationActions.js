@@ -5,7 +5,7 @@ import { GET_LOCATIONS, GET_LOCATION, PROFILE_LOADING, GET_ERRORS } from './type
 // Get all banks
 export const getAllLocations = (userRole) => dispatch => {
     dispatch(setProfileLoading());
-    axios.get(`/api/location/${userRole}`)
+    axios.get(`https://victoriousloycefoundation.com/payhub/api/location/${userRole}`)
         .then(res => 
             dispatch({
                 type: GET_LOCATIONS,
@@ -25,7 +25,7 @@ export const getAllLocations = (userRole) => dispatch => {
 export const newLocation = (locationData, userRole, history) => dispatch => {
 
     axios
-        .post(`/api/location/${userRole}`, locationData)
+        .post(`https://victoriousloycefoundation.com/payhub/api/location/${userRole}`, locationData)
         .then(res => history.push('/locations'))
         .catch(err => 
             dispatch({
@@ -40,7 +40,7 @@ export const newLocation = (locationData, userRole, history) => dispatch => {
 // Get bank offices
 export const getBankOffices = (bank) => dispatch => {
     dispatch(setProfileLoading());
-    axios.get(`/api/bank-location/${bank}`)
+    axios.get(`https://victoriousloycefoundation.com/payhub/api/bank-location/${bank}`)
         .then(res => 
             dispatch({
                 type: GET_LOCATIONS,
@@ -59,7 +59,7 @@ export const getBankOffices = (bank) => dispatch => {
 // Edit Location
 export const getLocation = (locid, role) => dispatch => {
     axios
-        .get(`/api/location/${locid}/${role}`)
+        .get(`https://victoriousloycefoundation.com/payhub/api/location/${locid}/${role}`)
         .then(res => 
                 dispatch({
                     type: GET_LOCATION,
@@ -80,7 +80,7 @@ export const getLocation = (locid, role) => dispatch => {
 export const updateLocation = (locid, userRole, updateData, history) => dispatch => {
 
     axios
-        .put(`/api/location/${locid}/${userRole}`, updateData)
+        .put(`https://victoriousloycefoundation.com/payhub/api/location/${locid}/${userRole}`, updateData)
         .then(res => history.push('/locations'))
         .catch(err => 
             dispatch({

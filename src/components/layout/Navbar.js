@@ -39,9 +39,9 @@ class Navbar extends Component {
             { userlinks }
             <ul className="navbar-nav">
                 <li className="nav-item">
-                    <a href="#" onClick={this.onLogoutClick.bind(this)} className="nav-link">
+                    <button onClick={this.onLogoutClick.bind(this)} className="btn btn-link nav-link">
                         Logout
-                    </a>
+                    </button>
                 </li>
             </ul>
         </>
