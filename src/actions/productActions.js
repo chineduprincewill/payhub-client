@@ -1,11 +1,14 @@
 import axios from 'axios';
+import configData from '../utils/config.json';
 
 import { GET_PRODUCTS, GET_PRODUCT, PROFILE_LOADING, GET_ERRORS } from './types';
+
+const url = configData.SERVER_URL;
 
 // Get all banks
 export const getAllProducts = (userRole) => dispatch => {
     dispatch(setProfileLoading());
-    axios.get(`https://victoriousloycefoundation.com/payhub/api/product/${userRole}`)
+    axios.get(`${url}/api/product/${userRole}`)
         .then(res => 
             dispatch({
                 type: GET_PRODUCTS,
@@ -24,7 +27,7 @@ export const getAllProducts = (userRole) => dispatch => {
 export const newProduct = (productData, userRole, history) => dispatch => {
 
     axios
-        .post(`https://victoriousloycefoundation.com/payhub/api/product/${userRole}`, productData)
+        .post(`${url}/api/product/${userRole}`, productData)
         .then(res => history.push('/products'))
         .catch(err => 
             dispatch({
@@ -38,7 +41,7 @@ export const newProduct = (productData, userRole, history) => dispatch => {
 // Edit Product
 export const getProduct = (prodid, role) => dispatch => {
     axios
-        .get(`https://victoriousloycefoundation.com/payhub/api/product/${prodid}/${role}`)
+        .get(`${url}/api/product/${prodid}/${role}`)
         .then(res => 
                 dispatch({
                     type: GET_PRODUCT,
@@ -59,7 +62,7 @@ export const getProduct = (prodid, role) => dispatch => {
 export const updateProduct = (prodid, userRole, updateData, history) => dispatch => {
 
     axios
-        .put(`https://victoriousloycefoundation.com/payhub/api/product/${prodid}/${userRole}`, updateData)
+        .put(`${url}/api/product/${prodid}/${userRole}`, updateData)
         .then(res => history.push('/products'))
         .catch(err => 
             dispatch({

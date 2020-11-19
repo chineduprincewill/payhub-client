@@ -1,11 +1,14 @@
 import axios from 'axios';
+import configData from '../utils/config.json';
 
 import { GET_PROFILE, GET_PROFILES, PROFILE_LOADING, GET_ERROR, CLEAR_CURRENT_PROFILE } from './types';
+
+const url = configData.SERVER_URL;
 
 // Get currrent profile
 export const getCurrentProfile = () => dispatch => {
     dispatch(setProfileLoading());
-    axios.get('https://victoriousloycefoundation.com/payhub/api/user')
+    axios.get(`${url}/api/user`)
         .then(res => 
             dispatch({
                 type: GET_PROFILE,
@@ -24,7 +27,7 @@ export const getCurrentProfile = () => dispatch => {
 // Get all profiles
 export const getAllProfiles = (userRole, office) => dispatch => {
     dispatch(setProfileLoading());
-    axios.get(`https://victoriousloycefoundation.com/payhub/api/users/${userRole}/${office}`)
+    axios.get(`${url}/api/users/${userRole}/${office}`)
         .then(res => 
             dispatch({
                 type: GET_PROFILES,
@@ -44,7 +47,7 @@ export const getAllProfiles = (userRole, office) => dispatch => {
 export const newUser = (userData, userRole, history) => dispatch => {
 
     axios
-        .post(`https://victoriousloycefoundation.com/payhub/api/register/${userRole}`, userData)
+        .post(`${url}/api/register/${userRole}`, userData)
         .then(res => history.push('/users'))
         .catch(err => 
             dispatch({
@@ -59,7 +62,7 @@ export const newUser = (userData, userRole, history) => dispatch => {
 export const getUser = (userid) => dispatch => {
 
     axios
-        .get(`https://victoriousloycefoundation.com/payhub/api/users/${userid}`)
+        .get(`${url}/api/users/${userid}`)
         .then(res => 
             dispatch({
                 type: GET_PROFILE,
@@ -78,7 +81,7 @@ export const getUser = (userid) => dispatch => {
 export const updateUser = (userid, role, office, userData) => dispatch => {
 
     axios
-        .put(`https://victoriousloycefoundation.com/payhub/api/users/${userid}/${role}/${office}`, userData)
+        .put(`${url}/api/users/${userid}/${role}/${office}`, userData)
         .then( res => 
             dispatch({
                 type: GET_PROFILES,

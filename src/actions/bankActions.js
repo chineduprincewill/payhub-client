@@ -1,11 +1,14 @@
 import axios from 'axios';
+import configData from '../utils/config.json';
 
 import { GET_BANK, GET_BANKS, PROFILE_LOADING, GET_ERRORS } from './types';
+
+const url = configData.SERVER_URL;
 
 // Get all banks
 export const getAllBanks = () => dispatch => {
     dispatch(setProfileLoading());
-    axios.get('https://victoriousloycefoundation.com/payhub/api/bank')
+    axios.get(`${url}/api/bank`)
         .then(res => 
             dispatch({
                 type: GET_BANKS,
@@ -25,7 +28,7 @@ export const getAllBanks = () => dispatch => {
 export const newBank = (bankData, userRole, history) => dispatch => {
 
     axios
-        .post(`https://victoriousloycefoundation.com/payhub/api/bank/${userRole}`, bankData)
+        .post(`${url}/api/bank/${userRole}`, bankData)
         .then(res => history.push('/banks'))
         .catch(err => 
             dispatch({
@@ -39,7 +42,7 @@ export const newBank = (bankData, userRole, history) => dispatch => {
 // Edit Bank
 export const getBank = (bankid, role) => dispatch => {
     axios
-        .get(`https://victoriousloycefoundation.com/payhub/api/bank/${bankid}/${role}`)
+        .get(`${url}/api/bank/${bankid}/${role}`)
         .then(res => 
                 dispatch({
                     type: GET_BANK,
@@ -58,7 +61,7 @@ export const getBank = (bankid, role) => dispatch => {
 export const updateBank = (bankid, userRole, updateData, history) => dispatch => {
 
     axios
-        .put(`https://victoriousloycefoundation.com/payhub/api/bank/${bankid}/${userRole}`, updateData)
+        .put(`${url}/api/bank/${bankid}/${userRole}`, updateData)
         .then(res => history.push('/banks'))
         .catch(err => 
             dispatch({

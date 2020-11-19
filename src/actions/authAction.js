@@ -1,12 +1,15 @@
 import axios from 'axios';
 import setAuthToken from '../utils/setAuthToken';
+import configData from '../utils/config.json';
 
 import { GET_ERROR, SET_CURRENT_USER } from './types';
+
+const url = configData.SERVER_URL;
 
 // Login - Get User Token
 export const loginUser = userData => dispatch => {
     axios
-        .post('https://victoriousloycefoundation.com/payhub/api/login', userData)
+        .post(`${url}/api/login`, userData)
         .then(res => {
             // Save to localStorage
             const { token, user } = res.data;

@@ -1,6 +1,6 @@
 {
   "name": "payhub-client",
-  "homepage": "https://brave-heisenberg-b926c9.netlify.app",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "engines": {

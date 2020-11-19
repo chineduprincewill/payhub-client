@@ -1,11 +1,14 @@
 import axios from 'axios';
+import configData from '../utils/config.json';
 
 import { GET_INSTITUTIONS, GET_INSTITUTION, PROFILE_LOADING, GET_ERRORS } from './types';
+
+const url = configData.SERVER_URL;
 
 // Get all banks
 export const getAllInstitutions = (userRole) => dispatch => {
     dispatch(setProfileLoading());
-    axios.get(`https://victoriousloycefoundation.com/payhub/api/institution/${userRole}`)
+    axios.get(`${url}/api/institution/${userRole}`)
         .then(res => 
             dispatch({
                 type: GET_INSTITUTIONS,
@@ -24,7 +27,7 @@ export const getAllInstitutions = (userRole) => dispatch => {
 // Edit Institution
 export const getInstitution = (instid, role) => dispatch => {
     axios
-        .get(`https://victoriousloycefoundation.com/payhub/api/institution/${instid}/${role}`)
+        .get(`${url}/api/institution/${instid}/${role}`)
         .then(res => 
                 dispatch({
                     type: GET_INSTITUTION,
@@ -44,7 +47,7 @@ export const getInstitution = (instid, role) => dispatch => {
 export const newInstitution = (instData, userRole, history) => dispatch => {
 
     axios
-        .post(`https://victoriousloycefoundation.com/payhub/api/institution/${userRole}`, instData)
+        .post(`${url}/api/institution/${userRole}`, instData)
         .then(res => history.push('/institutions'))
         .catch(err => 
             dispatch({
@@ -59,7 +62,7 @@ export const newInstitution = (instData, userRole, history) => dispatch => {
 export const updateInstitution = (instid, userRole, updateData, history) => dispatch => {
 
     axios
-        .put(`https://victoriousloycefoundation.com/payhub/api/institution/${instid}/${userRole}`, updateData)
+        .put(`${url}/api/institution/${instid}/${userRole}`, updateData)
         .then(res => history.push('/institutions'))
         .catch(err => 
             dispatch({
